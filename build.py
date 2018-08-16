@@ -32,7 +32,7 @@ def buildfrp(name):
         shutil.copyfile(os.path.join(frpspath,name+".exe"),os.path.join(target,name+".exe"))
     else:
         shutil.copyfile(os.path.join(frpspath,name),os.path.join(target,name))
-    print "copy "+name+".exe success!"
+    print "copy "+name+" success!"
     os.chdir( curpath )
 
 
