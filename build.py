@@ -7,6 +7,7 @@ import re
 import os
 import sys
 import shutil
+import platform
 
 curpath=os.getcwd();#当前文件目录
 binfile=os.path.join(curpath,"bin")
@@ -26,7 +27,11 @@ def buildfrp(name):
     target=os.path.join(binfile,name+"/")
     if os.path.exists( target )==False:
         os.makedirs(target)
-    shutil.copyfile(os.path.join(frpspath,name+".exe"),os.path.join(target,name+".exe"))
+    sysstr = platform.system()
+    if sysstr=="windows":
+        shutil.copyfile(os.path.join(frpspath,name+".exe"),os.path.join(target,name+".exe"))
+    else:
+        shutil.copyfile(os.path.join(frpspath,name),os.path.join(target,name))
     print "copy "+name+".exe success!"
     os.chdir( curpath )
 
